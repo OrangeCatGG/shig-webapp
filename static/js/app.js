@@ -126,7 +126,7 @@ function initParticles() {
         return;
     }
     
-    const particleCount = window.innerWidth > 768 ? 50 : 25;
+    const particleCount = window.innerWidth > 768 ? 500 : 25;
     
     for (let i = 0; i < particleCount; i++) {
         const particle = createParticle();
@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typingElement) {
         const text = typingElement.textContent;
         setTimeout(() => {
-            typeWriter(typingElement, text, 100);
+            typeWriter(typingElement, text, 50);
         }, 1000);
     }
 });
