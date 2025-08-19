@@ -13,9 +13,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       
-      - name: Test SSH
-        run: ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@${{ secrets.EC2_HOST }} "echo Connected!"
-
       - name: Setup SSH
         run: |
           mkdir -p ~/.ssh
