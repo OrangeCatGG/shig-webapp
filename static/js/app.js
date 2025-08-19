@@ -126,7 +126,7 @@ function initParticles() {
         return;
     }
     
-    const particleCount = window.innerWidth > 768 ? 50 : 25;
+    const particleCount = window.innerWidth > 768 ? 500 : 25;
     
     for (let i = 0; i < particleCount; i++) {
         const particle = createParticle();
