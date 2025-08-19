@@ -317,6 +317,7 @@ main {
     position: relative;
     color: var(--accent-primary);
     text-shadow: var(--neon-glow);
+    animation: lightning-flash 2s ease-in-out infinite;
 }
 
 .glitch-text:hover::before,
@@ -339,6 +340,33 @@ main {
     animation: glitch-2 0.3s ease-in-out;
     color: var(--accent-tertiary);
     z-index: -2;
+}
+
+@keyframes lightning-flash {
+    0%, 80%, 82%, 84%, 100% { 
+        color: var(--accent-primary);
+        text-shadow: var(--neon-glow);
+    }
+    81% { 
+        color: #ffffff;
+        text-shadow: 
+            0 0 5px #ffffff,
+            0 0 10px #ffffff,
+            0 0 15px #00ffff,
+            0 0 20px #00ffff,
+            0 0 35px #00ffff,
+            0 0 40px #00ffff,
+            0 0 50px #00ffff,
+            0 0 75px #00ffff;
+    }
+    83% { 
+        color: var(--accent-tertiary);
+        text-shadow: 
+            0 0 5px var(--accent-tertiary),
+            0 0 10px var(--accent-tertiary),
+            0 0 15px var(--accent-tertiary),
+            0 0 20px var(--accent-tertiary);
+    }
 }
 
 @keyframes glitch-1 {
