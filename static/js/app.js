@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typingElement) {
         const text = typingElement.textContent;
         setTimeout(() => {
-            typeWriter(typingElement, text, 100);
+            typeWriter(typingElement, text, 50);
         }, 1000);
     }
 });
