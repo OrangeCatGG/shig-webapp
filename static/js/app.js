@@ -241,6 +241,28 @@ document.addEventListener('keydown', (e) => {
 // Initialize particles when DOM is loaded
 document.addEventListener('DOMContentLoaded', initParticles);
 
+// Neon glow for About section when it enters the viewport
+document.addEventListener('DOMContentLoaded', () => {
+    const aboutSection = document.getElementById('about');
+    if (!aboutSection) return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const glowObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // If user prefers reduced motion, we still show a softer static halo
+            if (entry.isIntersecting) {
+                aboutSection.classList.add('glow-active');
+            } else {
+                aboutSection.classList.remove('glow-active');
+            }
+        });
+    }, { threshold: 0.4 });
+
+    glowObserver.observe(aboutSection);
+});
+
+
 // Resize handler for particles
 window.addEventListener('resize', () => {
     // Clear existing particles
