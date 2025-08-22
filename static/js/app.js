@@ -352,6 +352,8 @@ document.addEventListener('DOMContentLoaded', () => {
 })();
 
 
+
+
 // Console easter egg
 console.log(`
     ╔══════════════════════════════════════╗
