@@ -392,7 +392,59 @@
             </div> <!-- end .projects-grid -->
         </div> <!-- end .container -->
         </section>
-                
+
+                <!-- Case Studies Section -->
+        <section id="case-studies" class="section">
+        <div class="container">
+            <h2 class="section-title">Case Studies</h2>
+            <div class="projects-grid">
+
+            <!-- CloudWatch -->
+            <div class="project-card">
+                <h3 class="project-title">AWS CloudWatch Monitoring & Alerts</h3>
+                <p class="project-description"><strong>Problem:</strong> Flask services had no proactive monitoring; outages were detected late.</p>
+                <p class="project-description"><strong>Actions:</strong> Built dashboards for latency/error rates, created alarms with Slack/Email routing, and wrote runbooks.</p>
+                <p class="project-description"><strong>Results:</strong> MTTR dropped from ~40 min to <strong>12 min</strong>, with clear alert context.</p>
+                <div class="project-tags">
+                <span class="project-tag">AWS</span>
+                <span class="project-tag">CloudWatch</span>
+                <span class="project-tag">Dashboards</span>
+                <span class="project-tag">Alarms</span>
+                </div>
+            </div>
+
+            <!-- ECS Auto Scaling -->
+            <div class="project-card">
+                <h3 class="project-title">ECS Service Auto Scaling</h3>
+                <p class="project-description"><strong>Problem:</strong> High traffic spikes caused 504 errors and service instability.</p>
+                <p class="project-description"><strong>Actions:</strong> Implemented target tracking on CPU/memory & ALB request counts. Tuned cooldowns + min/max guardrails.</p>
+                <p class="project-description"><strong>Results:</strong> Reduced error rate by <strong>70%</strong> during peak events; kept p95 latency within <strong>SLO (≤300ms)</strong>.</p>
+                <div class="project-tags">
+                <span class="project-tag">AWS</span>
+                <span class="project-tag">ECS</span>
+                <span class="project-tag">Auto Scaling</span>
+                <span class="project-tag">IaC</span>
+                </div>
+            </div>
+
+            <!-- Datadog -->
+            <div class="project-card">
+                <h3 class="project-title">Datadog Monitoring & Alerting</h3>
+                <p class="project-description"><strong>Problem:</strong> Alert fatigue and lack of visibility slowed incident response.</p>
+                <p class="project-description"><strong>Actions:</strong> Deployed APM, built RPS/p95/error dashboards, SLOs, and composite monitors. Optimized log pipelines.</p>
+                <p class="project-description"><strong>Results:</strong> Alert noise reduced by <strong>60%</strong>, RCA time cut by <strong>50%</strong>.</p>
+                <div class="project-tags">
+                <span class="project-tag">Datadog</span>
+                <span class="project-tag">APM</span>
+                <span class="project-tag">Dashboards</span>
+                <span class="project-tag">SLO</span>
+                </div>
+            </div>
+
+            </div>
+        </div>
+        </section>
+                        
                 <div class="certifications">
                     <h3 class="certifications-title">Udemy Certifications</h3>
                     <div class="cert-list">
