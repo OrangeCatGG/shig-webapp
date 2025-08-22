@@ -184,6 +184,13 @@ body {
     display: flex;
     gap: 2rem;
     list-style: none;
+    overflow-x: auto;         /* allow horizontal scroll */
+    white-space: nowrap;      /* prevent wrapping */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;    /* Firefox hide scrollbar */
+}
+.nav-menu::-webkit-scrollbar {
+    display: none;            /* Chrome/Safari hide scrollbar */
 }
 
 .nav-link {
