@@ -35,6 +35,7 @@
                 <a href="#features" class="nav-link" data-section="features">Features</a>
                 <a href="#tech-stack" class="nav-link" data-section="tech-stack">Tech Stack</a>
                 <a href="#installation" class="nav-link" data-section="installation">Installation</a>
+                <a href="#docker" class="nav-link" data-section="docker">Docker</a>
                 <a href="#structure" class="nav-link" data-section="structure">Structure</a>
                 <a href="#deployment" class="nav-link" data-section="deployment">Deployment</a>
             </div>
@@ -173,7 +174,7 @@
                         <h3 class="step-title">1. Clone the repository</h3>
                         <div class="code-block">
                             <code>
-git clone &lt;repository-url&gt;<br>
+git clone &lt;repository-url-go-to-github-porfolio&gt;<br>
 cd portfolio
                             </code>
                         </div>
@@ -208,6 +209,80 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
                         <p class="step-desc">Navigate to <code class="inline-code">http://localhost:5000</code></p>
                     </div>
                 </section>
+                                    
+                <!-- Docker (Alternative Installation) -->
+                    <div id="docker" class="step-card">
+                        <h3 class="step-title">Alternative: Run with Docker</h3>
+                        <p class="step-desc">
+                            Use a prebuilt Docker image to run the app without installing Python or dependencies locally.
+                        </p>
+
+                        <!-- Pull the image -->
+                        <h4 class="section-heading" style="font-size:1.25rem; margin-top:1rem;">1) Pull the image</h4>
+                        <div class="code-block">
+                            <code>docker pull shig24/shig-webapp:latest</code>
+                        </div>
+
+                        <!-- Run the container -->
+                        <h4 class="section-heading" style="font-size:1.25rem; margin-top:1rem;">2) Run the container</h4>
+                        <p class="step-desc" style="margin-bottom:0.5rem;">
+                            If the app listens on <code class="inline-code">5000</code> inside the container (Flask default):
+                        </p>
+                        <div class="code-block">
+                            <code>docker run -d --name shig-webapp -p 5000:5000 shig24/shig-webapp:latest</code>
+                        </div>
+                        <p class="step-desc" style="margin:0.75rem 0 0.5rem;">
+                            If your image exposes <code class="inline-code">80</code> (e.g., Gunicorn/Nginx):
+                        </p>
+                        <div class="code-block">
+                            <code>docker run -d --name shig-webapp -p 8080:80 shig24/shig-webapp:latest</code>
+                        </div>
+
+                        <!-- Optional env vars -->
+                        <h4 class="section-heading" style="font-size:1.25rem; margin-top:1rem;">3) Optional: Environment variables</h4>
+                        <div class="code-block">
+                            <code>
+                    docker run -d --name shig-webapp \
+                    -e FLASK_ENV=production \
+                    -e PORT=5000 \
+                    -p 5000:5000 shig24/shig-webapp:latest
+                            </code>
+                        </div>
+
+                        <!-- docker-compose -->
+                        <h4 class="section-heading" style="font-size:1.25rem; margin-top:1rem;">4) docker-compose (recommended)</h4>
+                        <p class="step-desc">Create <code class="inline-code">docker-compose.yml</code>:</p>
+                        <div class="code-block">
+                            <code>
+                    version: "3.9"
+                    services:
+                    web:
+                        image: shig24/shig-webapp:latest
+                        container_name: shig-webapp
+                        ports:
+                        - "5000:5000"   # or "8080:80" if your container serves on 80
+                        environment:
+                        - FLASK_ENV=production
+                        - PORT=5000
+                        restart: unless-stopped
+                            </code>
+                        </div>
+                        <div class="code-block">
+                            <code>docker compose up -d</code>
+                        </div>
+
+                        <!-- Open in browser -->
+                        <h4 class="section-heading" style="font-size:1.25rem; margin-top:1rem;">5) Open your browser</h4>
+                        <p class="step-desc">
+                            Go to <code class="inline-code">http://localhost:5000</code> (or <code class="inline-code">http://localhost:8080</code> if you mapped to 80).
+                        </p>
+
+                        <!-- Notes -->
+                        <p class="doc-text" style="margin-top:1rem;">
+                            <strong>Notes:</strong> If you’re on Apple Silicon and the image is amd64-only, Docker Desktop will auto-emulate. For native multi-arch support, publish a
+                            <code class="inline-code">linux/amd64,linux/arm64</code> manifest when building the image.
+                        </p>
+                    </div>
 
                 <!-- Project Structure Section -->
                 <section id="structure" class="doc-section">
