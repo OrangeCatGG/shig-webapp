@@ -80,15 +80,7 @@
                 <a href="#youtube" class="nav-link" data-section="youtube">YouTube</a>
                 <a href="#contact" class="nav-link" data-section="contact">Contact</a>
                 <a href="/documentation" class="nav-link">📚 Docs</a>
-                <a
-                    href="{{ url_for('static', filename='assets/SheigfredBelloCV.pdf') }}"
-                    class="nav-link"
-                    download
-                    target="_blank"
-                    rel="noopener"
-                >
-                    📄 Resume
-                </a>
+                <a href="#" class="nav-link resume-download">📄 Download Resume</a>
 
             </div>
             <div class="nav-controls">
@@ -128,15 +120,7 @@
                     <div class="hero-cta">
                         <a href="#contact" class="cta-button primary">Get In Touch</a>
                         <a href="#about" class="cta-button secondary">Learn More</a>
-                        <a
-                            href="{{ url_for('static', filename='assets/SheigfredBelloCV.pdf') }}"
-                            class="cta-button resume"
-                            download
-                            target="_blank"
-                            rel="noopener"
-                        >
-                            📄 Download Résumé
-                         </a>
+                        <a href="#" class="cta-button primary resume-download">📄 Download Resume</a>
                     </div>
                 </div>
             </div>
@@ -579,5 +563,39 @@
     </footer>
 
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const buttons = document.querySelectorAll(".resume-download");
+    console.log("resume-download buttons found:", buttons.length);
+
+    const PASSWORD = "haha"; // 🔑 your password
+    const RESUME_URL = "{{ url_for('static', filename='assets/SheigfredBelloCV.pdf') }}";
+
+    buttons.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+        // Stop any smooth-scroll / nav link handlers
+        e.preventDefault();
+        e.stopPropagation();
+        if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+
+        const input = prompt("Enter password to download resume:");
+        if (input === null) return; // user cancelled
+
+        if (input.trim() === PASSWORD) {
+            // Force a download
+            const a = document.createElement("a");
+            a.href = RESUME_URL;
+            a.download = "SheigfredBelloCV.pdf";
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+        } else {
+            alert("❌ Incorrect password. Please try again.");
+        }
+        }, true); // <-- capture phase to run before other handlers
+    });
+    });
+    </script>
+
 </body>
 </html>
