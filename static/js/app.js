@@ -331,6 +331,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+(function () {
+  const preloader = document.getElementById('preloader');
+  if (!preloader) return;
+
+  // Safety timeout in case 'load' never fires due to blocked resources
+  const failsafe = setTimeout(hidePreloader, 5000);
+
+  window.addEventListener('load', () => {
+    clearTimeout(failsafe);
+    // Small delay so users perceive the transition
+    setTimeout(hidePreloader, 300);
+  });
+
+  function hidePreloader() {
+    if (!preloader.classList.contains('hidden')) {
+      preloader.classList.add('hidden');
+    }
+  }
+})();
+
+
 // Console easter egg
 console.log(`
     ╔══════════════════════════════════════╗

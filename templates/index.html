@@ -21,6 +21,17 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 </head>
 <body>
+
+        <!-- Preloader -->
+    <div id="preloader" class="preloader" aria-hidden="true">
+    <div class="preloader-inner">
+        <div class="preloader-logo">SB</div>
+        <div class="preloader-spinner"></div>
+        <div class="preloader-text">Loading<span class="dots">...</span></div>
+    </div>
+    </div>
+
+
     <!-- Animated Background -->
     <div class="bg-animation">
         <div class="gradient-bg"></div>
@@ -69,6 +80,16 @@
                 <a href="#youtube" class="nav-link" data-section="youtube">YouTube</a>
                 <a href="#contact" class="nav-link" data-section="contact">Contact</a>
                 <a href="/documentation" class="nav-link">📚 Docs</a>
+                <a
+                    href="{{ url_for('static', filename='assets/SheigfredBelloCV.pdf') }}"
+                    class="nav-link"
+                    download
+                    target="_blank"
+                    rel="noopener"
+                >
+                    📄 Resume
+                </a>
+
             </div>
             <div class="nav-controls">
                 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
@@ -107,6 +128,15 @@
                     <div class="hero-cta">
                         <a href="#contact" class="cta-button primary">Get In Touch</a>
                         <a href="#about" class="cta-button secondary">Learn More</a>
+                        <a
+                            href="{{ url_for('static', filename='assets/SheigfredBelloCV.pdf') }}"
+                            class="cta-button resume"
+                            download
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            📄 Download Résumé
+                         </a>
                     </div>
                 </div>
             </div>
@@ -158,56 +188,79 @@
             </div>
         </section>
 
-        <!-- Skills Section -->
+                <!-- Skills Section -->
         <section id="skills" class="section">
-            <div class="container">
-                <h2 class="section-title">Skills & Technologies</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3 class="category-title">Cloud & AWS</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag" data-tooltip="Amazon Elastic Compute Cloud">EC2</span>
-                            <span class="skill-tag" data-tooltip="Relational Database Service">RDS</span>
-                            <span class="skill-tag" data-tooltip="Simple Storage Service">S3</span>
-                            <span class="skill-tag" data-tooltip="Virtual Private Cloud">VPC</span>
-                            <span class="skill-tag" data-tooltip="Domain Name System">Route53</span>
-                            <span class="skill-tag" data-tooltip="Infrastructure as Code">CloudFormation</span>
-                            <span class="skill-tag" data-tooltip="Cost Management">Cost Explorer</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3 class="category-title">Systems & Infrastructure</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Linux</span>
-                            <span class="skill-tag">Windows Server</span>
-                            <span class="skill-tag">VMware</span>
-                            <span class="skill-tag">Dell PowerEdge</span>
-                            <span class="skill-tag">ESXi</span>
-                            <span class="skill-tag">QNAP</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3 class="category-title">DevOps & Automation</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Ansible</span>
-                            <span class="skill-tag">Docker</span>
-                            <span class="skill-tag">GitHub CI/CD</span>
-                            <span class="skill-tag">Python</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3 class="category-title">Monitoring & Networking</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Datadog</span>
-                            <span class="skill-tag">Zabbix</span>
-                            <span class="skill-tag">Prometheus</span>
-                            <span class="skill-tag">Grafana</span>
-                            <span class="skill-tag">TCP/IP</span>
-                            <span class="skill-tag">MySQL/MariaDB</span>
-                        </div>
-                    </div>
+        <div class="container">
+            <h2 class="section-title">Skills & Technologies</h2>
+            <div class="skills-grid">
+            
+            <!-- Cloud & AWS -->
+            <div class="skill-category">
+                <h3 class="category-title">Cloud & AWS</h3>
+                <div class="skill-badges">
+                <span class="skill-badge" title="Amazon Elastic Compute Cloud">
+                    <span class="badge-emoji">💻</span><span>EC2</span>
+                </span>
+                <span class="skill-badge" title="Relational Database Service">
+                    <span class="badge-emoji">🗄️</span><span>RDS</span>
+                </span>
+                <span class="skill-badge" title="Simple Storage Service">
+                    <span class="badge-emoji">📦</span><span>S3</span>
+                </span>
+                <span class="skill-badge" title="Virtual Private Cloud">
+                    <span class="badge-emoji">🌐</span><span>VPC</span>
+                </span>
+                <span class="skill-badge" title="Route 53 (DNS)">
+                    <span class="badge-emoji">🧭</span><span>Route53</span>
+                </span>
+                <span class="skill-badge" title="Infrastructure as Code">
+                    <span class="badge-emoji">🧩</span><span>CloudFormation</span>
+                </span>
+                <span class="skill-badge" title="Cost Management">
+                    <span class="badge-emoji">💰</span><span>Cost Explorer</span>
+                </span>
                 </div>
             </div>
+
+            <!-- Systems & Infrastructure -->
+            <div class="skill-category">
+                <h3 class="category-title">Systems & Infrastructure</h3>
+                <div class="skill-badges">
+                <span class="skill-badge"><span class="badge-emoji">🐧</span><span>Linux</span></span>
+                <span class="skill-badge"><span class="badge-emoji">🪟</span><span>Windows Server</span></span>
+                <span class="skill-badge"><span class="badge-emoji">💠</span><span>VMware</span></span>
+                <span class="skill-badge"><span class="badge-emoji">🖥️</span><span>Dell PowerEdge</span></span>
+                <span class="skill-badge"><span class="badge-emoji">🧱</span><span>ESXi</span></span>
+                <span class="skill-badge"><span class="badge-emoji">🗃️</span><span>QNAP</span></span>
+                </div>
+            </div>
+
+            <!-- DevOps & Automation -->
+            <div class="skill-category">
+                <h3 class="category-title">DevOps & Automation</h3>
+                <div class="skill-badges">
+                <span class="skill-badge"><span class="badge-emoji">🧰</span><span>Ansible</span></span>
+                <span class="skill-badge"><span class="badge-emoji">🐳</span><span>Docker</span></span>
+                <span class="skill-badge"><span class="badge-emoji">⚙️</span><span>GitHub CI/CD</span></span>
+                <span class="skill-badge"><span class="badge-emoji">🐍</span><span>Python</span></span>
+                </div>
+            </div>
+
+            <!-- Monitoring & Networking -->
+            <div class="skill-category">
+                <h3 class="category-title">Monitoring & Networking</h3>
+                <div class="skill-badges">
+                <span class="skill-badge"><span class="badge-emoji">🐶</span><span>Datadog</span></span>
+                <span class="skill-badge"><span class="badge-emoji">📈</span><span>Zabbix</span></span>
+                <span class="skill-badge"><span class="badge-emoji">🏺</span><span>Prometheus</span></span>
+                <span class="skill-badge"><span class="badge-emoji">📊</span><span>Grafana</span></span>
+                <span class="skill-badge"><span class="badge-emoji">🌐</span><span>TCP/IP</span></span>
+                <span class="skill-badge"><span class="badge-emoji">🐬</span><span>MySQL/MariaDB</span></span>
+                </div>
+            </div>
+
+            </div>
+        </div>
         </section>
 
         <!-- Experience Section -->
