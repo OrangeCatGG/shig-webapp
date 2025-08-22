@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - Sheigfred Bello Portfolio</title>
+    <meta name="description" content="Technical documentation for Sheigfred Bello's DevOps Engineer portfolio website.">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="{{ url_for('static', filename='css/styles.css') }}" as="style">
+    <link rel="preload" href="{{ url_for('static', filename='js/app.js') }}" as="script">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="gradient-bg"></div>
+        <div class="scanlines"></div>
+        <div class="particles" id="particles"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-bar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="/" class="brand-link">
+                    <span class="brand-text">SB</span>
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="/" class="nav-link">← Back to Portfolio</a>
+                <a href="#overview" class="nav-link" data-section="overview">Overview</a>
+                <a href="#features" class="nav-link" data-section="features">Features</a>
+                <a href="#tech-stack" class="nav-link" data-section="tech-stack">Tech Stack</a>
+                <a href="#installation" class="nav-link" data-section="installation">Installation</a>
+                <a href="#structure" class="nav-link" data-section="structure">Structure</a>
+                <a href="#deployment" class="nav-link" data-section="deployment">Deployment</a>
+            </div>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="documentation-main">
+        <div class="container">
+            <!-- Header -->
+            <header class="doc-header">
+                <h1 class="doc-title glitch-text" data-text="Documentation">
+                    Documentation
+                </h1>
+                <p class="doc-subtitle">
+                    Technical documentation for the cyberpunk portfolio website
+                </p>
+            </header>
+
+            <!-- Documentation Content -->
+            <div class="doc-content">
+                <!-- Overview Section -->
+                <section id="overview" class="doc-section">
+                    <h1 class="section-heading">Sheigfred Bello - DevOps Engineer Portfolio</h1>
+                    <p class="doc-text">
+                        A modern, cyberpunk-themed portfolio website built with Flask, featuring a responsive design with neon aesthetics, 
+                        animated particles, and smooth scrolling navigation.
+                    </p>
+                </section>
+
+                <!-- Features Section -->
+                <section id="features" class="doc-section">
+                    <h2 class="section-heading">Features</h2>
+                    <ul class="feature-list">
+                        <li><strong>Cyberpunk Aesthetic</strong>: Neon gradients, animated particles, scanlines, and glitch effects</li>
+                        <li><strong>Responsive Design</strong>: Mobile-first approach with breakpoints for all devices</li>
+                        <li><strong>Dark/Light Mode</strong>: Toggle between themes with persistent preference storage</li>
+                        <li><strong>Smooth Scrolling</strong>: Single-page layout with sticky navigation</li>
+                        <li><strong>Performance Optimized</strong>: Lazy loading, throttled scroll events, and GPU-friendly animations</li>
+                        <li><strong>Accessible</strong>: ARIA labels, keyboard navigation, and reduced motion support</li>
+                        <li><strong>SEO Friendly</strong>: Semantic HTML, meta tags, and Open Graph support</li>
+                        <li><strong>Interactive Elements</strong>: Holographic effects, neon loading animations, modal popups</li>
+                        <li><strong>Floating Action Buttons</strong>: Quick access to contact methods and resume</li>
+                    </ul>
+                </section>
+
+                <!-- Tech Stack Section -->
+                <section id="tech-stack" class="doc-section">
+                    <h2 class="section-heading">Tech Stack</h2>
+                    <div class="tech-grid">
+                        <div class="tech-category">
+                            <h3 class="tech-title">Backend</h3>
+                            <ul class="tech-list">
+                                <li>Python 3.x</li>
+                                <li>Flask</li>
+                                <li>Jinja2 Templates</li>
+                            </ul>
+                        </div>
+                        <div class="tech-category">
+                            <h3 class="tech-title">Frontend</h3>
+                            <ul class="tech-list">
+                                <li>HTML5</li>
+                                <li>CSS3 (Vanilla)</li>
+                                <li>JavaScript (ES6+)</li>
+                            </ul>
+                        </div>
+                        <div class="tech-category">
+                            <h3 class="tech-title">Styling</h3>
+                            <ul class="tech-list">
+                                <li>Custom CSS</li>
+                                <li>CSS Grid & Flexbox</li>
+                                <li>Glassmorphism Effects</li>
+                            </ul>
+                        </div>
+                        <div class="tech-category">
+                            <h3 class="tech-title">Performance</h3>
+                            <ul class="tech-list">
+                                <li>Intersection Observer API</li>
+                                <li>Throttled Events</li>
+                                <li>GPU Optimizations</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sections Overview -->
+                <section id="sections" class="doc-section">
+                    <h2 class="section-heading">Sections</h2>
+                    <div class="sections-grid">
+                        <div class="section-card">
+                            <h3 class="card-title">🏠 Home</h3>
+                            <p class="card-desc">Hero section with animated title and contact info</p>
+                        </div>
+                        <div class="section-card">
+                            <h3 class="card-title">👨‍💻 About</h3>
+                            <p class="card-desc">Professional summary with key statistics and social links</p>
+                        </div>
+                        <div class="section-card">
+                            <h3 class="card-title">🛠️ Skills</h3>
+                            <p class="card-desc">Technology stack organized by categories with tooltips</p>
+                        </div>
+                        <div class="section-card">
+                            <h3 class="card-title">💼 Experience</h3>
+                            <p class="card-desc">Interactive timeline of professional roles with detailed modals</p>
+                        </div>
+                        <div class="section-card">
+                            <h3 class="card-title">🚀 Projects</h3>
+                            <p class="card-desc">Portfolio of key projects with technology tags</p>
+                        </div>
+                        <div class="section-card">
+                            <h3 class="card-title">📺 YouTube</h3>
+                            <p class="card-desc">Embedded video from "The Root Access Podcast"</p>
+                        </div>
+                        <div class="section-card">
+                            <h3 class="card-title">📧 Contact</h3>
+                            <p class="card-desc">Contact form with validation and direct contact info</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Installation Section -->
+                <section id="installation" class="doc-section">
+                    <h2 class="section-heading">Installation & Setup</h2>
+                    
+                    <div class="step-card">
+                        <h3 class="step-title">1. Clone the repository</h3>
+                        <div class="code-block">
+                            <code>
+git clone &lt;repository-url&gt;<br>
+cd portfolio
+                            </code>
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <h3 class="step-title">2. Create a virtual environment</h3>
+                        <div class="code-block">
+                            <code>
+python -m venv venv<br>
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+                            </code>
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <h3 class="step-title">3. Install dependencies</h3>
+                        <div class="code-block">
+                            <code>pip install -r requirements.txt</code>
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <h3 class="step-title">4. Run the application</h3>
+                        <div class="code-block">
+                            <code>python app.py</code>
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <h3 class="step-title">5. Open your browser</h3>
+                        <p class="step-desc">Navigate to <code class="inline-code">http://localhost:5000</code></p>
+                    </div>
+                </section>
+
+                <!-- Project Structure Section -->
+                <section id="structure" class="doc-section">
+                    <h2 class="section-heading">Project Structure</h2>
+                    <div class="code-block structure-tree">
+                        <code>
+portfolio/<br>
+├── app.py                 # Flask application<br>
+├── requirements.txt       # Python dependencies<br>
+├── README.md             # Project documentation<br>
+├── templates/<br>
+│   ├── index.html        # Main portfolio template<br>
+│   └── documentation.html # Documentation template<br>
+└── static/<br>
+    ├── css/<br>
+    │   └── styles.css    # Main stylesheet<br>
+    └── js/<br>
+        └── app.js        # JavaScript functionality
+                        </code>
+                    </div>
+                </section>
+
+                <!-- Key Features Explained -->
+                <section id="key-features" class="doc-section">
+                    <h2 class="section-heading">Key Features Explained</h2>
+                    
+                    <div class="feature-detail">
+                        <h3 class="feature-title">🎨 Cyberpunk Design Elements</h3>
+                        <ul class="feature-points">
+                            <li><strong>Animated Background</strong>: Multi-layer gradient with parallax cityscape</li>
+                            <li><strong>Particle System</strong>: GPU-optimized floating particles with neon glow</li>
+                            <li><strong>Scanlines</strong>: Subtle animated overlay for retro CRT effect</li>
+                            <li><strong>Glitch Effects</strong>: Hover animations on headings and interactive elements</li>
+                            <li><strong>Neon Glow</strong>: CSS box-shadow effects on buttons and highlights</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-detail">
+                        <h3 class="feature-title">⚡ Performance Optimizations</h3>
+                        <ul class="feature-points">
+                            <li><strong>Throttled Scroll Events</strong>: Limited to ~60fps for smooth performance</li>
+                            <li><strong>Intersection Observer</strong>: Lazy loading and scroll-triggered animations</li>
+                            <li><strong>Reduced Motion Support</strong>: Respects user's motion preferences</li>
+                            <li><strong>Optimized Particles</strong>: Adaptive particle count based on screen size</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-detail">
+                        <h3 class="feature-title">♿ Accessibility Features</h3>
+                        <ul class="feature-points">
+                            <li><strong>Keyboard Navigation</strong>: Full keyboard support with focus indicators</li>
+                            <li><strong>ARIA Labels</strong>: Screen reader friendly navigation and controls</li>
+                            <li><strong>High Contrast Support</strong>: Enhanced visibility for accessibility needs</li>
+                            <li><strong>Semantic HTML</strong>: Proper heading hierarchy and landmark elements</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Browser Support -->
+                <section id="browser-support" class="doc-section">
+                    <h2 class="section-heading">Browser Support</h2>
+                    <div class="browser-grid">
+                        <div class="browser-item">
+                            <span class="browser-icon">🌐</span>
+                            <span class="browser-name">Chrome 60+</span>
+                        </div>
+                        <div class="browser-item">
+                            <span class="browser-icon">🦊</span>
+                            <span class="browser-name">Firefox 55+</span>
+                        </div>
+                        <div class="browser-item">
+                            <span class="browser-icon">🧭</span>
+                            <span class="browser-name">Safari 12+</span>
+                        </div>
+                        <div class="browser-item">
+                            <span class="browser-icon">📘</span>
+                            <span class="browser-name">Edge 79+</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Performance Metrics -->
+                <section id="performance" class="doc-section">
+                    <h2 class="section-heading">Performance</h2>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">90+</div>
+                            <div class="metric-label">Lighthouse Score</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">&lt; 1.5s</div>
+                            <div class="metric-label">First Contentful Paint</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">&lt; 2.5s</div>
+                            <div class="metric-label">Largest Contentful Paint</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">&lt; 0.1</div>
+                            <div class="metric-label">Cumulative Layout Shift</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Deployment Section -->
+                <section id="deployment" class="doc-section">
+                    <h2 class="section-heading">Deployment</h2>
+                    
+                    <div class="deployment-option">
+                        <h3 class="deploy-title">🔧 Local Development</h3>
+                        <div class="code-block">
+                            <code>python app.py</code>
+                        </div>
+                    </div>
+
+                    <div class="deployment-option">
+                        <h3 class="deploy-title">🚀 Production Deployment</h3>
+                        <ol class="deploy-steps">
+                            <li>Set <code class="inline-code">debug=False</code> in <code class="inline-code">app.py</code></li>
+                            <li>Use a production WSGI server like Gunicorn:</li>
+                        </ol>
+                        <div class="code-block">
+                            <code>
+pip install gunicorn<br>
+gunicorn app:app
+                            </code>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contact Section -->
+                <section id="contact-info" class="doc-section">
+                    <h2 class="section-heading">Contact</h2>
+                    <div class="contact-card">
+                        <h3 class="contact-name">Sheigfred Bello</h3>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <span class="contact-icon">📧</span>
+                                <span>sheigfred.bello@gmail.com</span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-icon">📱</span>
+                                <span>0906-025-1610</span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-icon">📍</span>
+                                <span>Makati City, Philippines</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- License Section -->
+                <section id="license" class="doc-section">
+                    <h2 class="section-heading">License</h2>
+                    <p class="doc-text">
+                        This project is open source and available under the 
+                        <a href="#" class="doc-link">MIT License</a>.
+                    </p>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Sheigfred Bello. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
