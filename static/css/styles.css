@@ -2382,3 +2382,66 @@ textarea:focus {
   transform: translateY(-2px) scale(1.03);
   box-shadow: 0 8px 20px rgba(0, 255, 255, 0.4);
 }
+
+.leaderboard-item.highlight {
+    background-color: #fffae6; /* light yellow */
+    border-left: 4px solid #ff9800;
+    animation: highlightFlash 1.2s ease-in-out;
+}
+
+@keyframes highlightFlash {
+    0%, 100% { background-color: #fffae6; }
+    50% { background-color: #fff3b0; }
+}
+
+/* Leaderboard rows: one line per player */
+.leaderboard-table { width: 100%; margin-top: .5rem; }
+
+.leaderboard-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: .6rem 1rem;
+  border-bottom: 1px solid var(--border, rgba(255,255,255,.08));
+  /* remove if you previously set column layout somewhere */
+  flex-direction: row;
+}
+
+.leaderboard-row.header {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  opacity: .7;
+  border-bottom: 1px solid var(--border, rgba(255,255,255,.16));
+}
+
+.leaderboard-row.highlight {
+  background: rgba(255,215,0,.08);
+  box-shadow: 0 0 0 1px rgba(255,215,0,.25) inset;
+}
+
+/* Columns */
+.col-rank {
+  width: 2.5rem;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.col-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.col-score {
+  width: 4.5rem;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Small screens tweak */
+@media (max-width: 480px) {
+  .col-rank { width: 2rem; }
+  .col-score { width: 3.5rem; }
+}
