@@ -10,4 +10,8 @@ def index():
 def documentation():
     return render_template('documentation.html')
 if __name__ == '__main__':
+@app.route('/aws-practice')
+def aws_practice():
+    return render_template('aws_practice.html')
+
     app.run(debug=True, host='0.0.0.0', port=5000)
