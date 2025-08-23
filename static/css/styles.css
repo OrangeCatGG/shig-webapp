@@ -1566,6 +1566,31 @@ textarea:focus {
     text-decoration: none;
 }
 
+/* ===== Docs layout overrides (fix "placing") ===== */
+.documentation-main .section {
+  /* neutralize homepage section layout inside docs */
+  min-height: auto;
+  padding: 0;               /* the doc cards already have their own padding */
+  display: block;
+  align-items: stretch;
+}
+
+.documentation-main .doc-header {
+  padding-top: 6rem;        /* clearer space under fixed navbar */
+}
+
+/* nice spacing between doc sections */
+.documentation-main .doc-section {
+  margin-bottom: 3rem;
+}
+
+/* make anchor jumps not hide under fixed navbar */
+.documentation-main .doc-section,
+.documentation-main .doc-header {
+  scroll-margin-top: 90px;  /* ~ navbar height */
+}
+
+
 /* Responsive Design for Documentation */
 @media (max-width: 768px) {
     .doc-title {
