@@ -1,10 +1,32 @@
-venv/
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
 *.pyo
 *.pyd
-*.db
-*.sqlite3
+
+# Envs & caches
+.venv/
+venv/
+pip-wheel-metadata/
+
+# Logs / DBs
 *.log
+*.sqlite3
+*.db
+
+# VCS / OS
+.git/
+.gitignore
+.DS_Store
+
+# Node (if ever used)
+node_modules/
+
+# Runtime data (we will bind-mount these instead)
+leaderboard.json
+
+# Keep private assets OUT of the image
+private/
+
+# Local env files
 .env
-.git
