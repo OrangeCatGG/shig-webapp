@@ -311,124 +311,277 @@
 
         <!-- Projects Section -->
         <section id="projects" class="section">
-        <div class="container">
-            <h2 class="section-title">Projects</h2>
-            <div class="projects-grid">
+            <div class="container">
+                <h2 class="section-title">Projects</h2>
+                
+                <!-- 3D Carousel Container -->
+                <div class="carousel-3d-container">
+                    <div class="carousel-3d" id="projects-carousel">
+                        
+                        <div class="carousel-item active" data-index="0">
+                            <div class="project-card-3d">
+                                <div class="card-front">
+                                    <div class="project-icon">🔐</div>
+                                    <h3 class="project-title">Enterprise SSO Implementation</h3>
+                                    <p class="project-description">
+                                        Implemented comprehensive single sign-on solution using LDAP, SAML, and OpenID protocols.
+                                    </p>
+                                    <div class="project-tags">
+                                        <span class="project-tag">LDAP</span>
+                                        <span class="project-tag">SAML</span>
+                                        <span class="project-tag">OpenID</span>
+                                    </div>
+                                </div>
+                                <div class="card-back">
+                                    <h4>Technical Details</h4>
+                                    <ul>
+                                        <li>Integrated with Active Directory</li>
+                                        <li>SAML 2.0 implementation</li>
+                                        <li>Multi-factor authentication</li>
+                                        <li>Cross-domain trust setup</li>
+                                    </ul>
+                                    <div class="project-metrics">
+                                        <span class="metric">500+ Users</span>
+                                        <span class="metric">99.9% Uptime</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-            <div class="project-card">
-                <h3 class="project-title">Enterprise SSO Implementation</h3>
-                <p class="project-description">
-                Implemented comprehensive single sign-on solution using LDAP, SAML, and OpenID protocols.
-                </p>
-                <div class="project-tags">
-                <span class="project-tag">LDAP</span>
-                <span class="project-tag">SAML</span>
-                <span class="project-tag">OpenID</span>
+                        <div class="carousel-item" data-index="1">
+                            <div class="project-card-3d">
+                                <div class="card-front">
+                                    <div class="project-icon">🪟</div>
+                                    <h3 class="project-title">Windows 10→11 Migration</h3>
+                                    <p class="project-description">
+                                        Large-scale enterprise migration from Windows 10 to Windows 11 across multiple sites.
+                                    </p>
+                                    <div class="project-tags">
+                                        <span class="project-tag">Windows</span>
+                                        <span class="project-tag">Migration</span>
+                                        <span class="project-tag">Enterprise</span>
+                                    </div>
+                                </div>
+                                <div class="card-back">
+                                    <h4>Migration Scope</h4>
+                                    <ul>
+                                        <li>9,000+ desktop migrations</li>
+                                        <li>Zero-downtime deployment</li>
+                                        <li>Automated testing pipeline</li>
+                                        <li>User training programs</li>
+                                    </ul>
+                                    <div class="project-metrics">
+                                        <span class="metric">9K+ Devices</span>
+                                        <span class="metric">6 Months</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item" data-index="2">
+                            <div class="project-card-3d">
+                                <div class="card-front">
+                                    <div class="project-icon">🐧</div>
+                                    <h3 class="project-title">Linux Server Deployment</h3>
+                                    <p class="project-description">
+                                        Automated deployment and configuration of Linux servers across multiple environments.
+                                    </p>
+                                    <div class="project-tags">
+                                        <span class="project-tag">Linux</span>
+                                        <span class="project-tag">Automation</span>
+                                        <span class="project-tag">Deployment</span>
+                                    </div>
+                                </div>
+                                <div class="card-back">
+                                    <h4>Infrastructure</h4>
+                                    <ul>
+                                        <li>Ansible automation</li>
+                                        <li>Docker containerization</li>
+                                        <li>CI/CD pipeline integration</li>
+                                        <li>Monitoring & alerting</li>
+                                    </ul>
+                                    <div class="project-metrics">
+                                        <span class="metric">50+ Servers</span>
+                                        <span class="metric">100% Automated</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item" data-index="3">
+                            <div class="project-card-3d">
+                                <div class="card-front">
+                                    <div class="project-icon">☁️</div>
+                                    <h3 class="project-title">AWS Cost Optimization</h3>
+                                    <p class="project-description">
+                                        Achieved 15-30% cost savings through strategic AWS resource optimization and monitoring.
+                                    </p>
+                                    <div class="project-tags">
+                                        <span class="project-tag">AWS</span>
+                                        <span class="project-tag">Cost Optimization</span>
+                                        <span class="project-tag">Monitoring</span>
+                                    </div>
+                                </div>
+                                <div class="card-back">
+                                    <h4>Optimization Results</h4>
+                                    <ul>
+                                        <li>Reserved Instance planning</li>
+                                        <li>Auto-scaling implementation</li>
+                                        <li>Resource rightsizing</li>
+                                        <li>Cost monitoring dashboards</li>
+                                    </ul>
+                                    <div class="project-metrics">
+                                        <span class="metric">30% Savings</span>
+                                        <span class="metric">$50K/Year</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item" data-index="4">
+                            <div class="project-card-3d">
+                                <div class="card-front">
+                                    <div class="project-icon">🔒</div>
+                                    <h3 class="project-title">Cross-Domain Authentication</h3>
+                                    <p class="project-description">
+                                        Implemented secure cross-domain authentication system for multi-site enterprise environment.
+                                    </p>
+                                    <div class="project-tags">
+                                        <span class="project-tag">Authentication</span>
+                                        <span class="project-tag">Security</span>
+                                        <span class="project-tag">Multi-Site</span>
+                                    </div>
+                                </div>
+                                <div class="card-back">
+                                    <h4>Security Features</h4>
+                                    <ul>
+                                        <li>OAuth 2.0 implementation</li>
+                                        <li>JWT token management</li>
+                                        <li>Role-based access control</li>
+                                        <li>Audit logging system</li>
+                                    </ul>
+                                    <div class="project-metrics">
+                                        <span class="metric">10 Sites</span>
+                                        <span class="metric">Zero Breaches</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item" data-index="5">
+                            <div class="project-card-3d">
+                                <div class="card-front">
+                                    <div class="project-icon">📊</div>
+                                    <h3 class="project-title">AWS CloudWatch Monitoring</h3>
+                                    <p class="project-description">
+                                        End-to-end observability for Flask services using CloudWatch metrics, logs, and alarms.
+                                    </p>
+                                    <div class="project-tags">
+                                        <span class="project-tag">AWS</span>
+                                        <span class="project-tag">CloudWatch</span>
+                                        <span class="project-tag">Monitoring</span>
+                                    </div>
+                                </div>
+                                <div class="card-back">
+                                    <h4>Monitoring Stack</h4>
+                                    <ul>
+                                        <li>Custom metrics & dashboards</li>
+                                        <li>Automated alerting system</li>
+                                        <li>Log aggregation & analysis</li>
+                                        <li>Performance optimization</li>
+                                    </ul>
+                                    <div class="project-metrics">
+                                        <span class="metric">24/7 Monitoring</span>
+                                        <span class="metric">5min MTTR</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item" data-index="6">
+                            <div class="project-card-3d">
+                                <div class="card-front">
+                                    <div class="project-icon">⚖️</div>
+                                    <h3 class="project-title">ECS Auto Scaling</h3>
+                                    <p class="project-description">
+                                        Target tracking auto scaling with CPU/Memory and ALB metrics for optimal performance.
+                                    </p>
+                                    <div class="project-tags">
+                                        <span class="project-tag">ECS</span>
+                                        <span class="project-tag">Auto Scaling</span>
+                                        <span class="project-tag">Performance</span>
+                                    </div>
+                                </div>
+                                <div class="card-back">
+                                    <h4>Scaling Strategy</h4>
+                                    <ul>
+                                        <li>Target tracking policies</li>
+                                        <li>Custom CloudWatch metrics</li>
+                                        <li>Load balancer integration</li>
+                                        <li>Cost-performance optimization</li>
+                                    </ul>
+                                    <div class="project-metrics">
+                                        <span class="metric">300ms SLO</span>
+                                        <span class="metric">99.9% Uptime</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item" data-index="7">
+                            <div class="project-card-3d">
+                                <div class="card-front">
+                                    <div class="project-icon">🐶</div>
+                                    <h3 class="project-title">Datadog Monitoring</h3>
+                                    <p class="project-description">
+                                        Integrated APM, Logs, and Metrics for comprehensive application visibility and alerting.
+                                    </p>
+                                    <div class="project-tags">
+                                        <span class="project-tag">Datadog</span>
+                                        <span class="project-tag">APM</span>
+                                        <span class="project-tag">Observability</span>
+                                    </div>
+                                </div>
+                                <div class="card-back">
+                                    <h4>Observability Suite</h4>
+                                    <ul>
+                                        <li>Application performance monitoring</li>
+                                        <li>Log pipeline optimization</li>
+                                        <li>SLO/SLI implementation</li>
+                                        <li>Intelligent alerting</li>
+                                    </ul>
+                                    <div class="project-metrics">
+                                        <span class="metric">60% Less Noise</span>
+                                        <span class="metric">50% Faster RCA</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <!-- Carousel Controls -->
+                    <div class="carousel-controls">
+                        <button class="carousel-btn prev-btn" id="prevProject">
+                            <span class="btn-icon">←</span>
+                            <span class="btn-text">Previous</span>
+                        </button>
+                        <div class="carousel-indicators" id="projectIndicators">
+                            <!-- Indicators will be generated by JavaScript -->
+                        </div>
+                        <button class="carousel-btn next-btn" id="nextProject">
+                            <span class="btn-text">Next</span>
+                            <span class="btn-icon">→</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Project Counter -->
+                    <div class="project-counter">
+                        <span id="currentProjectNum">1</span> / <span id="totalProjects">8</span>
+                    </div>
                 </div>
+                
             </div>
-
-            <div class="project-card">
-                <h3 class="project-title">Windows 10→11 Migration</h3>
-                <p class="project-description">
-                Large-scale enterprise migration from Windows 10 to Windows 11 across multiple sites.
-                </p>
-                <div class="project-tags">
-                <span class="project-tag">Windows</span>
-                <span class="project-tag">Migration</span>
-                <span class="project-tag">Enterprise</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <h3 class="project-title">Linux Server Deployment</h3>
-                <p class="project-description">
-                Automated deployment and configuration of Linux servers across multiple environments.
-                </p>
-                <div class="project-tags">
-                <span class="project-tag">Linux</span>
-                <span class="project-tag">Automation</span>
-                <span class="project-tag">Deployment</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <h3 class="project-title">AWS Cost Optimization</h3>
-                <p class="project-description">
-                Achieved 15-30% cost savings through strategic AWS resource optimization and monitoring.
-                </p>
-                <div class="project-tags">
-                <span class="project-tag">AWS</span>
-                <span class="project-tag">Cost Optimization</span>
-                <span class="project-tag">Monitoring</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <h3 class="project-title">Cross-Domain Authentication</h3>
-                <p class="project-description">
-                Implemented secure cross-domain authentication system for multi-site enterprise environment.
-                </p>
-                <div class="project-tags">
-                <span class="project-tag">Authentication</span>
-                <span class="project-tag">Security</span>
-                <span class="project-tag">Multi-Site</span>
-                </div>
-            </div>
-
-            <!-- CloudWatch Monitoring & Alerts -->
-            <div class="project-card">
-                <h3 class="project-title">AWS CloudWatch Monitoring & Alerts</h3>
-                <p class="project-description">
-                Designed and implemented end-to-end observability for Flask services using CloudWatch metrics, logs, and alarms.
-                Created dashboards for latency, error rates, and infrastructure health. Alerts routed to Slack/Email with
-                actionable context and runbooks.
-                </p>
-                <div class="project-tags">
-                <span class="project-tag">AWS</span>
-                <span class="project-tag">CloudWatch</span>
-                <span class="project-tag">Alarms</span>
-                <span class="project-tag">Dashboards</span>
-                <span class="project-tag">Runbooks</span>
-                <span class="project-tag">SNS</span>
-                </div>
-            </div>
-
-            <!-- ECS Auto Scaling (CPU/Memory/Req) -->
-            <div class="project-card">
-                <h3 class="project-title">ECS Service Auto Scaling (Target Tracking)</h3>
-                <p class="project-description">
-                Implemented ECS service auto scaling with target tracking on CPU/Memory and request-based policies via ALB metrics.
-                Included cooldown tuning, min/max capacity guards, and safe deployments to keep p95 latency within SLO during traffic spikes.
-                </p>
-                <div class="project-tags">
-                <span class="project-tag">AWS</span>
-                <span class="project-tag">ECS</span>
-                <span class="project-tag">Auto Scaling</span>
-                <span class="project-tag">ALB Metrics</span>
-                <span class="project-tag">SLO</span>
-                <span class="project-tag">IaC</span>
-                </div>
-            </div>
-
-            <!-- Datadog Monitoring & Alerting -->
-            <div class="project-card">
-                <h3 class="project-title">Datadog Monitoring & Alerting</h3>
-                <p class="project-description">
-                Integrated Datadog APM, Logs, and Metrics for application and container visibility. Built dashboards (RPS, p95, error rate),
-                SLOs, and composite monitors to reduce alert noise. Added log pipelines and tags for fast root-cause analysis.
-                </p>
-                <div class="project-tags">
-                <span class="project-tag">Datadog</span>
-                <span class="project-tag">APM</span>
-                <span class="project-tag">Dashboards</span>
-                <span class="project-tag">SLO/SLI</span>
-                <span class="project-tag">Log Pipelines</span>
-                <span class="project-tag">Alerting</span>
-                </div>
-            </div>
-
-            </div> <!-- end .projects-grid -->
-        </div> <!-- end .container -->
         </section>
 
                 <!-- Case Studies Section -->

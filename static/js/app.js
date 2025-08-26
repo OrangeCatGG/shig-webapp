@@ -262,6 +262,180 @@ document.addEventListener('DOMContentLoaded', () => {
     glowObserver.observe(aboutSection);
 });
 
+// 3D Projects Carousel
+class ProjectsCarousel {
+    constructor() {
+        this.currentIndex = 0;
+        this.totalProjects = 8;
+        this.carousel = document.getElementById('projects-carousel');
+        this.indicators = document.getElementById('projectIndicators');
+        this.currentNum = document.getElementById('currentProjectNum');
+        this.totalNum = document.getElementById('totalProjects');
+        
+        this.init();
+    }
+    
+    init() {
+        if (!this.carousel) return;
+        
+        this.createIndicators();
+        this.updateDisplay();
+        this.bindEvents();
+        
+        // Auto-rotate every 5 seconds (optional)
+        this.startAutoRotate();
+    }
+    
+    createIndicators() {
+        if (!this.indicators) return;
+        
+        for (let i = 0; i < this.totalProjects; i++) {
+            const indicator = document.createElement('div');
+            indicator.className = `indicator ${i === 0 ? 'active' : ''}`;
+            indicator.addEventListener('click', () => this.goToSlide(i));
+            this.indicators.appendChild(indicator);
+        }
+    }
+    
+    bindEvents() {
+        const prevBtn = document.getElementById('prevProject');
+        const nextBtn = document.getElementById('nextProject');
+        
+        if (prevBtn) prevBtn.addEventListener('click', () => this.previousProject());
+        if (nextBtn) nextBtn.addEventListener('click', () => this.nextProject());
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (this.isInViewport()) {
+                if (e.key === 'ArrowLeft') this.previousProject();
+                if (e.key === 'ArrowRight') this.nextProject();
+            }
+        });
+        
+        // Touch/swipe support
+        this.addTouchSupport();
+    }
+    
+    addTouchSupport() {
+        if (!this.carousel) return;
+        
+        let startX = 0;
+        let startY = 0;
+        
+        this.carousel.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+        });
+        
+        this.carousel.addEventListener('touchend', (e) => {
+            if (!startX || !startY) return;
+            
+            const endX = e.changedTouches[0].clientX;
+            const endY = e.changedTouches[0].clientY;
+            
+            const diffX = startX - endX;
+            const diffY = startY - endY;
+            
+            // Only trigger if horizontal swipe is more significant than vertical
+            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+                if (diffX > 0) {
+                    this.nextProject();
+                } else {
+                    this.previousProject();
+                }
+            }
+            
+            startX = 0;
+            startY = 0;
+        });
+    }
+    
+    isInViewport() {
+        if (!this.carousel) return false;
+        const rect = this.carousel.getBoundingClientRect();
+        return rect.top < window.innerHeight && rect.bottom > 0;
+    }
+    
+    nextProject() {
+        this.currentIndex = (this.currentIndex + 1) % this.totalProjects;
+        this.updateCarousel();
+        this.resetAutoRotate();
+    }
+    
+    previousProject() {
+        this.currentIndex = (this.currentIndex - 1 + this.totalProjects) % this.totalProjects;
+        this.updateCarousel();
+        this.resetAutoRotate();
+    }
+    
+    goToSlide(index) {
+        this.currentIndex = index;
+        this.updateCarousel();
+        this.resetAutoRotate();
+    }
+    
+    updateCarousel() {
+        if (!this.carousel) return;
+        
+        // Rotate the entire carousel
+        const rotationAngle = -this.currentIndex * 45; // 45 degrees per item
+        this.carousel.style.transform = `rotateY(${rotationAngle}deg)`;
+        
+        // Update active states
+        const items = this.carousel.querySelectorAll('.carousel-item');
+        items.forEach((item, index) => {
+            item.classList.toggle('active', index === this.currentIndex);
+        });
+        
+        this.updateDisplay();
+    }
+    
+    updateDisplay() {
+        // Update indicators
+        const indicators = this.indicators?.querySelectorAll('.indicator');
+        indicators?.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === this.currentIndex);
+        });
+        
+        // Update counter
+        if (this.currentNum) this.currentNum.textContent = this.currentIndex + 1;
+        if (this.totalNum) this.totalNum.textContent = this.totalProjects;
+    }
+    
+    startAutoRotate() {
+        this.autoRotateInterval = setInterval(() => {
+            if (this.isInViewport() && !document.hidden) {
+                this.nextProject();
+            }
+        }, 5000); // 5 seconds
+    }
+    
+    resetAutoRotate() {
+        if (this.autoRotateInterval) {
+            clearInterval(this.autoRotateInterval);
+            this.startAutoRotate();
+        }
+    }
+    
+    destroy() {
+        if (this.autoRotateInterval) {
+            clearInterval(this.autoRotateInterval);
+        }
+    }
+}
+
+// Initialize Projects Carousel
+let projectsCarousel;
+document.addEventListener('DOMContentLoaded', () => {
+    projectsCarousel = new ProjectsCarousel();
+});
+
+// Cleanup on page unload
+window.addEventListener('beforeunload', () => {
+    if (projectsCarousel) {
+        projectsCarousel.destroy();
+    }
+});
 
 // Resize handler for particles
 window.addEventListener('resize', () => {
