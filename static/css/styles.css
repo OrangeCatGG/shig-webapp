@@ -795,30 +795,30 @@ main {
 .card-front,
 .card-back {
   position: absolute;
-  inset: 0;                     /* <- same top/right/bottom/left */
-  background: var(--bg-secondary);
+  inset: 0;
+  background: #1a1a2e;           /* pick any solid color you want */
   border: 1px solid var(--glass-border);
   border-radius: 1rem;
   padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  /* prevent flicker and layout hops */
-  backdrop-filter: none;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   transform-style: preserve-3d;
+  backdrop-filter: none;         /* kill blur */
 }
 
+/* Front stays solid */
 .card-front {
-  transform: rotateY(0deg) translateZ(0.01px);   /* tiny nudge avoids z-fighting */
+  transform: rotateY(0deg) translateZ(0.01px);
+  background: #1a1a2e;           /* solid front */
 }
 
+/* Back stays solid (different if you like) */
 .card-back {
   transform: rotateY(180deg) translateZ(0.01px);
-  /* If you want the back solid too, keep this line; otherwise delete: */
-  /* background: var(--bg-secondary); */
+  background: #16213e;           /* solid back */
 }
 
 /* extra safety for Safari */
