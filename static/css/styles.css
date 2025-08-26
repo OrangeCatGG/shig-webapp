@@ -796,7 +796,7 @@ main {
 .card-back {
   position: absolute;
   inset: 0;
-  background: #1a1a2e;           /* pick any solid color you want */
+  background: #1a1a2e;          /* solid opaque color */
   border: 1px solid var(--glass-border);
   border-radius: 1rem;
   padding: 2rem;
@@ -806,19 +806,18 @@ main {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   transform-style: preserve-3d;
-  backdrop-filter: none;         /* kill blur */
+  backdrop-filter: none;        /* remove glass blur */
+  opacity: 1;                   /* ensure 100% opaque */
 }
 
-/* Front stays solid */
 .card-front {
   transform: rotateY(0deg) translateZ(0.01px);
-  background: #1a1a2e;           /* solid front */
+  background: #1a1a2e;          /* dark solid */
 }
 
-/* Back stays solid (different if you like) */
 .card-back {
   transform: rotateY(180deg) translateZ(0.01px);
-  background: #16213e;           /* solid back */
+  background: #16213e;          /* slightly different solid for contrast */
 }
 
 /* extra safety for Safari */
