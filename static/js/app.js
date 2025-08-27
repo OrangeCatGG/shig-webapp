@@ -9,41 +9,46 @@ const particlesContainer = document.getElementById('particles');
 // Navigation functionality
 let isMenuOpen = false;
 
-navToggle.addEventListener('click', () => {
+if (navToggle && navMenu) {
+  navToggle.addEventListener('click', () => {
     isMenuOpen = !isMenuOpen;
     navMenu.classList.toggle('active');
     navToggle.classList.toggle('active');
-});
+  });
+}
 
 // Close mobile menu when clicking on a link
 document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        if (isMenuOpen) {
-            isMenuOpen = false;
-            navMenu.classList.remove('active');
-            navToggle.classList.remove('active');
-        }
-    });
+  link.addEventListener('click', () => {
+    if (isMenuOpen && navMenu && navToggle) {
+      isMenuOpen = false;
+      navMenu.classList.remove('active');
+      navToggle.classList.remove('active');
+    }
+  });
 });
 
 // Theme toggle functionality
 let isDarkMode = true;
 
-themeToggle.addEventListener('click', () => {
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
     isDarkMode = !isDarkMode;
     document.documentElement.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
-    themeToggle.querySelector('.theme-icon').textContent = isDarkMode ? '🌙' : '☀️';
-    
+    const icon = themeToggle.querySelector('.theme-icon');
+    if (icon) icon.textContent = isDarkMode ? '🌙' : '☀️';
     // Save theme preference
     localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-});
+  });
+}
 
 // Load saved theme
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme) {
-    isDarkMode = savedTheme === 'dark';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    themeToggle.querySelector('.theme-icon').textContent = isDarkMode ? '🌙' : '☀️';
+  isDarkMode = savedTheme === 'dark';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  const icon = themeToggle?.querySelector('.theme-icon');
+  if (icon) icon.textContent = isDarkMode ? '🌙' : '☀️';
 }
 
 // Smooth scrolling and active nav link highlighting
@@ -51,191 +56,186 @@ const sections = document.querySelectorAll('.section');
 const navLinks = document.querySelectorAll('.nav-link');
 
 function updateActiveNavLink() {
-    let current = '';
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        
-        if (window.pageYOffset >= sectionTop - 200) {
-            current = section.getAttribute('id');
-        }
-    });
-
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('data-section') === current) {
-            link.classList.add('active');
-        }
-    });
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    if (window.pageYOffset >= sectionTop - 200) {
+      current = section.getAttribute('id');
+    }
+  });
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('data-section') === current) {
+      link.classList.add('active');
+    }
+  });
 }
 
 // Navbar background on scroll
 function updateNavbar() {
-    if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(10, 10, 15, 0.95)';
-    } else {
-        navbar.style.background = 'rgba(10, 10, 15, 0.9)';
-    }
+  if (!navbar) return;
+  navbar.style.background = window.scrollY > 50 ? 'rgba(10, 10, 15, 0.95)' : 'rgba(10, 10, 15, 0.9)';
 }
 
 // Scroll event listeners
 window.addEventListener('scroll', () => {
-    updateActiveNavLink();
-    updateNavbar();
-    
-    // Parallax effect for cityscape
-    const cityscape = document.querySelector('.cityscape');
-    const scrolled = window.pageYOffset;
-    const parallax = scrolled * 0.5;
-    
-    if (cityscape) {
-        cityscape.style.transform = `translateY(${parallax}px)`;
-    }
+  updateActiveNavLink();
+  updateNavbar();
+
+  // Parallax effect for cityscape
+  const cityscape = document.querySelector('.cityscape');
+  const scrolled = window.pageYOffset;
+  const parallax = scrolled * 0.5;
+
+  if (cityscape) {
+    cityscape.style.transform = `translateY(${parallax}px)`;
+  }
 });
 
 // Initialize on load
 document.addEventListener('DOMContentLoaded', () => {
-    updateActiveNavLink();
-    updateNavbar();
+  updateActiveNavLink();
+  updateNavbar();
 });
 
 // Particle system
 function createParticle() {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    
-    // Random position
-    particle.style.left = Math.random() * 100 + '%';
-    particle.style.top = Math.random() * 100 + '%';
-    
-    // Random color
-    const colors = ['#00ffff', '#ff00ff', '#00ff88'];
-    particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-    
-    // Random animation delay
-    particle.style.animationDelay = Math.random() * 6 + 's';
-    particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
-    
-    return particle;
+  const particle = document.createElement('div');
+  particle.className = 'particle';
+
+  // Random position
+  particle.style.left = Math.random() * 100 + '%';
+  particle.style.top = Math.random() * 100 + '%';
+
+  // Random color
+  const colors = ['#00ffff', '#ff00ff', '#00ff88'];
+  particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+  // Random animation
+  particle.style.animationDelay = Math.random() * 6 + 's';
+  particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+
+  return particle;
 }
 
 // Initialize particles (only if motion is not reduced)
 function initParticles() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        return;
-    }
-    
-    const particleCount = window.innerWidth > 768 ? 500 : 25;
-    
-    for (let i = 0; i < particleCount; i++) {
-        const particle = createParticle();
-        particlesContainer.appendChild(particle);
-    }
+  if (!particlesContainer) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const particleCount = window.innerWidth > 768 ? 500 : 25;
+  const frag = document.createDocumentFragment();
+  for (let i = 0; i < particleCount; i++) {
+    frag.appendChild(createParticle());
+  }
+  particlesContainer.appendChild(frag);
 }
 
-// Contact form handling
-contactForm.addEventListener('submit', (e) => {
+// Contact form handling — GUARDED so other pages don't error out
+if (contactForm) {
+  contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    
+
     const formData = new FormData(contactForm);
     const name = formData.get('name');
     const email = formData.get('email');
     const message = formData.get('message');
-    
+
     // Basic validation
     if (!name || !email || !message) {
-        alert('Please fill in all fields.');
-        return;
+      alert('Please fill in all fields.');
+      return;
     }
-    
-    if (!isValidEmail(email)) {
-        alert('Please enter a valid email address.');
-        return;
+
+    if (!isValidEmail(String(email))) {
+      alert('Please enter a valid email address.');
+      return;
     }
-    
+
     // Simulate form submission
     const submitButton = contactForm.querySelector('.form-submit');
-    const originalText = submitButton.textContent;
-    
-    submitButton.textContent = 'Sending...';
-    submitButton.disabled = true;
-    
+    const originalText = submitButton?.textContent || 'Send Message';
+
+    if (submitButton) {
+      submitButton.textContent = 'Sending...';
+      submitButton.disabled = true;
+    }
+
     setTimeout(() => {
-        alert('Thank you for your message! I\'ll get back to you soon.');
-        contactForm.reset();
+      alert('Thank you for your message! I\'ll get back to you soon.');
+      contactForm.reset();
+      if (submitButton) {
         submitButton.textContent = originalText;
         submitButton.disabled = false;
+      }
     }, 2000);
-});
+  });
+}
 
 // Email validation helper
 function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
 }
 
 // Typing animation for hero subtitle
 function typeWriter(element, text, speed = 100) {
-    let i = 0;
-    element.textContent = '';
-    
-    function type() {
-        if (i < text.length) {
-            element.textContent += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-        }
+  let i = 0;
+  element.textContent = '';
+  function type() {
+    if (i < text.length) {
+      element.textContent += text.charAt(i);
+      i++;
+      setTimeout(type, speed);
     }
-    
-    type();
+  }
+  type();
 }
 
 // Initialize typing animation
 document.addEventListener('DOMContentLoaded', () => {
-    const typingElement = document.querySelector('.typing-text');
-    if (typingElement) {
-        const text = typingElement.textContent;
-        setTimeout(() => {
-            typeWriter(typingElement, text, 50);
-        }, 1000);
-    }
+  const typingElement = document.querySelector('.typing-text');
+  if (typingElement) {
+    const text = typingElement.textContent;
+    setTimeout(() => {
+      typeWriter(typingElement, text, 50);
+    }, 1000);
+  }
 });
 
 // Intersection Observer for animations
 const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
 }, observerOptions);
 
 // Observe elements for animation
 document.addEventListener('DOMContentLoaded', () => {
-    const animatedElements = document.querySelectorAll('.skill-category, .project-card, .timeline-item, .stat-item');
-    
-    animatedElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
-    });
+  const animatedElements = document.querySelectorAll('.skill-category, .project-card, .timeline-item, .stat-item');
+  animatedElements.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
 });
 
 // Keyboard navigation support
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && isMenuOpen) {
-        isMenuOpen = false;
-        navMenu.classList.remove('active');
-        navToggle.classList.remove('active');
-    }
+  if (e.key === 'Escape' && isMenuOpen && navMenu && navToggle) {
+    isMenuOpen = false;
+    navMenu.classList.remove('active');
+    navToggle.classList.remove('active');
+  }
 });
 
 // Initialize particles when DOM is loaded
@@ -243,60 +243,57 @@ document.addEventListener('DOMContentLoaded', initParticles);
 
 // Neon glow for About section when it enters the viewport
 document.addEventListener('DOMContentLoaded', () => {
-    const aboutSection = document.getElementById('about');
-    if (!aboutSection) return;
+  const aboutSection = document.getElementById('about');
+  if (!aboutSection) return;
 
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const glowObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        aboutSection.classList.add('glow-active');
+      } else {
+        aboutSection.classList.remove('glow-active');
+      }
+    });
+  }, { threshold: 0.4 });
 
-    const glowObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            // If user prefers reduced motion, we still show a softer static halo
-            if (entry.isIntersecting) {
-                aboutSection.classList.add('glow-active');
-            } else {
-                aboutSection.classList.remove('glow-active');
-            }
-        });
-    }, { threshold: 0.4 });
-
-    glowObserver.observe(aboutSection);
+  glowObserver.observe(aboutSection);
 });
-
 
 // Resize handler for particles
 window.addEventListener('resize', () => {
-    // Clear existing particles
-    particlesContainer.innerHTML = '';
-    // Reinitialize with appropriate count
-    initParticles();
+  if (!particlesContainer) return;
+  // Clear existing particles
+  particlesContainer.innerHTML = '';
+  // Reinitialize with appropriate count
+  initParticles();
 });
 
 // Performance optimization: throttle scroll events
 function throttle(func, limit) {
-    let inThrottle;
-    return function() {
-        const args = arguments;
-        const context = this;
-        if (!inThrottle) {
-            func.apply(context, args);
-            inThrottle = true;
-            setTimeout(() => inThrottle = false, limit);
-        }
+  let inThrottle;
+  return function () {
+    const args = arguments;
+    const context = this;
+    if (!inThrottle) {
+      func.apply(context, args);
+      inThrottle = true;
+      setTimeout(() => inThrottle = false, limit);
     }
+  }
 }
 
 // Apply throttling to scroll events
 window.addEventListener('scroll', throttle(() => {
-    updateActiveNavLink();
-    updateNavbar();
-    
-    const cityscape = document.querySelector('.cityscape');
-    const scrolled = window.pageYOffset;
-    const parallax = scrolled * 0.5;
-    
-    if (cityscape) {
-        cityscape.style.transform = `translateY(${parallax}px)`;
-    }
+  updateActiveNavLink();
+  updateNavbar();
+
+  const cityscape = document.querySelector('.cityscape');
+  const scrolled = window.pageYOffset;
+  const parallax = scrolled * 0.5;
+
+  if (cityscape) {
+    cityscape.style.transform = `translateY(${parallax}px)`;
+  }
 }, 16)); // ~60fps
 
 // Lazy loading for YouTube iframe
@@ -304,43 +301,38 @@ const youtubeContainer = document.querySelector('.video-wrapper');
 const youtubeIframe = youtubeContainer?.querySelector('iframe');
 
 if (youtubeIframe) {
-    const youtubeObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // YouTube iframe is already loaded, just ensure it's visible
-                youtubeObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1 });
-    
-    youtubeObserver.observe(youtubeContainer);
+  const youtubeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        youtubeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  youtubeObserver.observe(youtubeContainer);
 }
 
 // Add glitch effect to skill tags on hover
 document.addEventListener('DOMContentLoaded', () => {
-    const skillTags = document.querySelectorAll('.skill-tag');
-    
-    skillTags.forEach(tag => {
-        tag.addEventListener('mouseenter', () => {
-            tag.style.animation = 'glitch-1 0.3s ease-in-out';
-        });
-        
-        tag.addEventListener('animationend', () => {
-            tag.style.animation = '';
-        });
+  const skillTags = document.querySelectorAll('.skill-tag');
+  skillTags.forEach(tag => {
+    tag.addEventListener('mouseenter', () => {
+      tag.style.animation = 'glitch-1 0.3s ease-in-out';
     });
+    tag.addEventListener('animationend', () => {
+      tag.style.animation = '';
+    });
+  });
 });
 
+// Preloader (safe)
 (function () {
   const preloader = document.getElementById('preloader');
   if (!preloader) return;
 
-  // Safety timeout in case 'load' never fires due to blocked resources
   const failsafe = setTimeout(hidePreloader, 5000);
-
   window.addEventListener('load', () => {
     clearTimeout(failsafe);
-    // Small delay so users perceive the transition
     setTimeout(hidePreloader, 300);
   });
 
@@ -351,21 +343,60 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 })();
 
-
-
-
 // Console easter egg
-console.log(`
-    ╔══════════════════════════════════════╗
-    ║                                      ║
-    ║        Welcome to the Matrix!        ║
-    ║                                      ║
-    ║     Sheigfred Bello - DevOps Eng     ║
-    ║                                      ║
-    ║    "Optimizing the digital world"    ║
-    ║                                      ║
-    ╚══════════════════════════════════════╝
-    
-    🚀 Interested in the code? Check out the source!
-    📧 Contact: sheigfred.bello@gmail.com
-`);
+console.log(`\n    ╔══════════════════════════════════════╗\n    ║                                      ║\n    ║        Welcome to the Matrix!        ║\n    ║                                      ║\n    ║     Sheigfred Bello - DevOps Eng     ║\n    ║                                      ║\n    ║    "Optimizing the digital world"    ║\n    ║                                      ║\n    ╚══════════════════════════════════════╝\n    \n    🚀 Interested in the code? Check out the source!\n    📧 Contact: sheigfred.bello@gmail.com\n`);
+
+// ==============================
+// COPY BUTTONS FOR .code-blocks
+// ==============================
+document.addEventListener('DOMContentLoaded', () => {
+  const blocks = document.querySelectorAll('.code-block');
+  if (!blocks.length) return; // quietly skip on pages without code samples
+
+  blocks.forEach(block => {
+    // Ensure positioning for the absolute button
+    const style = window.getComputedStyle(block);
+    if (style.position === 'static') {
+      block.style.position = 'relative';
+    }
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.textContent = '📋 Copy';
+    btn.setAttribute('aria-label', 'Copy code to clipboard');
+    btn.style.cssText = [
+      'position:absolute',
+      'right:.6rem',
+      'top:.6rem',
+      'z-index:2',
+      'background:var(--bg-secondary)',
+      'border:1px solid var(--glass-border)',
+      'border-radius:.5rem',
+      'padding:.3rem .6rem',
+      'color:var(--text-primary)',
+      'cursor:pointer'
+    ].join(';');
+
+    block.appendChild(btn);
+
+    btn.addEventListener('click', async () => {
+      // Remove the button label if innerText includes it
+      const text = block.innerText.replace(/^📋 Copy$/m, '').trim();
+      try {
+        await navigator.clipboard.writeText(text);
+        btn.textContent = '✅ Copied';
+        setTimeout(() => (btn.textContent = '📋 Copy'), 1400);
+      } catch (err) {
+        // Fallback for non-secure contexts
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        ta.remove();
+        btn.textContent = '✅ Copied';
+        setTimeout(() => (btn.textContent = '📋 Copy'), 1400);
+      }
+    });
+  });
+});
