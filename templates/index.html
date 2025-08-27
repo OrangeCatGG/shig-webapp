@@ -454,6 +454,124 @@
         <section id="case-studies" class="section">
             <div class="container">
                 <h2 class="section-title">Case Studies</h2>
+                
+                <!-- Traffic Flow Diagram -->
+                <div class="traffic-flow-section">
+                    <h3 class="flow-title">🌐 How Users Access This Portfolio</h3>
+                    <p class="flow-subtitle">Simple, reliable infrastructure powering your experience</p>
+                    
+                    <div class="traffic-flow-container">
+                        <div class="flow-step" data-step="1">
+                            <div class="flow-icon">💻</div>
+                            <div class="flow-content">
+                                <h4>User's Device</h4>
+                                <p>You type <code>sheigfredbello.com</code> in your browser</p>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                        </div>
+                        
+                        <div class="flow-step" data-step="2">
+                            <div class="flow-icon">🌍</div>
+                            <div class="flow-content">
+                                <h4>DNS Lookup</h4>
+                                <p>Browser asks "Where is sheigfredbello.com?"</p>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                        </div>
+                        
+                        <div class="flow-step" data-step="3">
+                            <div class="flow-icon">🧭</div>
+                            <div class="flow-content">
+                                <h4>Route 53</h4>
+                                <p>AWS DNS service responds with server location</p>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                        </div>
+                        
+                        <div class="flow-step" data-step="4">
+                            <div class="flow-icon">📍</div>
+                            <div class="flow-content">
+                                <h4>A Record</h4>
+                                <p>Points to public IP: <code>XX.XX.XX.XX</code></p>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                        </div>
+                        
+                        <div class="flow-step" data-step="5">
+                            <div class="flow-icon">☁️</div>
+                            <div class="flow-content">
+                                <h4>EC2 Instance</h4>
+                                <p>AWS virtual server receives your request</p>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                        </div>
+                        
+                        <div class="flow-step" data-step="6">
+                            <div class="flow-icon">🔄</div>
+                            <div class="flow-content">
+                                <h4>Nginx</h4>
+                                <p>Web server processes and forwards request</p>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                        </div>
+                        
+                        <div class="flow-step" data-step="7">
+                            <div class="flow-icon">🐍</div>
+                            <div class="flow-content">
+                                <h4>Flask App</h4>
+                                <p>Python application generates the page</p>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                        </div>
+                        
+                        <div class="flow-step" data-step="8">
+                            <div class="flow-icon">🎨</div>
+                            <div class="flow-content">
+                                <h4>HTML/CSS/JS</h4>
+                                <p>Browser renders this beautiful portfolio!</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Interactive Timeline -->
+                    <div class="flow-timeline">
+                        <div class="timeline-track">
+                            <div class="timeline-progress" id="flow-progress"></div>
+                        </div>
+                        <div class="timeline-controls">
+                            <button class="timeline-btn" id="play-flow">▶️ Watch Flow</button>
+                            <button class="timeline-btn" id="reset-flow">🔄 Reset</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Tech Stack Summary -->
+                    <div class="tech-stack-summary">
+                        <h4>🛠️ Technology Stack</h4>
+                        <div class="stack-items">
+                            <div class="stack-item">
+                                <span class="stack-icon">🧭</span>
+                                <span class="stack-name">Route 53</span>
+                                <span class="stack-desc">DNS Management</span>
+                            </div>
+                            <div class="stack-item">
+                                <span class="stack-icon">☁️</span>
+                                <span class="stack-name">EC2</span>
+                                <span class="stack-desc">Virtual Server</span>
+                            </div>
+                            <div class="stack-item">
+                                <span class="stack-icon">🔄</span>
+                                <span class="stack-name">Nginx</span>
+                                <span class="stack-desc">Web Server</span>
+                            </div>
+                            <div class="stack-item">
+                                <span class="stack-icon">🐍</span>
+                                <span class="stack-name">Flask</span>
+                                <span class="stack-desc">Python Framework</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="projects-grid">
 
                     <!-- CloudWatch -->
