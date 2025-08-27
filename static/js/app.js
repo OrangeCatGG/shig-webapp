@@ -343,9 +343,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 })();
 
-// Console easter egg
-console.log(`\n    ╔══════════════════════════════════════╗\n    ║                                      ║\n    ║        Welcome to the Matrix!        ║\n    ║                                      ║\n    ║     Sheigfred Bello - DevOps Eng     ║\n    ║                                      ║\n    ║    "Optimizing the digital world"    ║\n    ║                                      ║\n    ╚══════════════════════════════════════╝\n    \n    🚀 Interested in the code? Check out the source!\n    📧 Contact: sheigfred.bello@gmail.com\n`);
-
 // ==============================
 // COPY BUTTONS FOR .code-blocks
 // ==============================
@@ -400,3 +397,154 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+// Traffic Flow Animation System
+class TrafficFlowAnimation {
+  constructor() {
+    this.steps = document.querySelectorAll('.flow-step');
+    this.progressBar = document.getElementById('flow-progress');
+    this.playButton = document.getElementById('play-flow');
+    this.resetButton = document.getElementById('reset-flow');
+    this.currentStep = 0;
+    this.isPlaying = false;
+    this.animationInterval = null;
+    
+    this.init();
+  }
+  
+  init() {
+    if (!this.playButton || !this.resetButton) return;
+    
+    this.playButton.addEventListener('click', () => this.playAnimation());
+    this.resetButton.addEventListener('click', () => this.resetAnimation());
+    
+    // Auto-play when section comes into view
+    this.setupIntersectionObserver();
+  }
+  
+  setupIntersectionObserver() {
+    const flowSection = document.querySelector('.traffic-flow-section');
+    if (!flowSection) return;
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !this.isPlaying) {
+          // Auto-play after a short delay
+          setTimeout(() => {
+            if (!this.isPlaying) this.playAnimation();
+          }, 1000);
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    observer.observe(flowSection);
+  }
+  
+  playAnimation() {
+    if (this.isPlaying) return;
+    
+    this.isPlaying = true;
+    this.playButton.textContent = '⏸️ Playing...';
+    this.playButton.disabled = true;
+    
+    this.animationInterval = setInterval(() => {
+      this.activateStep(this.currentStep);
+      this.updateProgress();
+      
+      this.currentStep++;
+      
+      if (this.currentStep >= this.steps.length) {
+        this.completeAnimation();
+      }
+    }, 800); // 800ms between each step
+  }
+  
+  activateStep(index) {
+    if (index < this.steps.length) {
+      // Mark previous steps as completed
+      for (let i = 0; i < index; i++) {
+        this.steps[i].classList.remove('active');
+        this.steps[i].classList.add('completed');
+      }
+      
+      // Activate current step
+      this.steps[index].classList.add('active');
+      this.steps[index].classList.remove('completed');
+      
+      // Add a subtle shake animation
+      this.steps[index].style.animation = 'none';
+      setTimeout(() => {
+        this.steps[index].style.animation = 'stepActivate 0.5s ease';
+      }, 10);
+    }
+  }
+  
+  updateProgress() {
+    const progress = ((this.currentStep + 1) / this.steps.length) * 100;
+    if (this.progressBar) {
+      this.progressBar.style.width = `${Math.min(progress, 100)}%`;
+    }
+  }
+  
+  completeAnimation() {
+    clearInterval(this.animationInterval);
+    this.isPlaying = false;
+    
+    // Mark all steps as completed
+    this.steps.forEach(step => {
+      step.classList.remove('active');
+      step.classList.add('completed');
+    });
+    
+    this.playButton.textContent = '✅ Complete!';
+    this.playButton.disabled = false;
+    
+    // Reset button text after 2 seconds
+    setTimeout(() => {
+      this.playButton.textContent = '▶️ Watch Flow';
+    }, 2000);
+  }
+  
+  resetAnimation() {
+    clearInterval(this.animationInterval);
+    this.isPlaying = false;
+    this.currentStep = 0;
+    
+    // Reset all steps
+    this.steps.forEach(step => {
+      step.classList.remove('active', 'completed');
+      step.style.animation = '';
+    });
+    
+    // Reset progress bar
+    if (this.progressBar) {
+      this.progressBar.style.width = '0%';
+    }
+    
+    // Reset button
+    this.playButton.textContent = '▶️ Watch Flow';
+    this.playButton.disabled = false;
+  }
+}
+
+// Add step activation animation keyframes
+const stepAnimationCSS = `
+@keyframes stepActivate {
+  0% { transform: scale(0.95); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+`;
+
+// Inject the CSS
+const styleSheet = document.createElement('style');
+styleSheet.textContent = stepAnimationCSS;
+document.head.appendChild(styleSheet);
+
+// Initialize Traffic Flow Animation
+document.addEventListener('DOMContentLoaded', () => {
+  new TrafficFlowAnimation();
+});
+
+// Console easter egg
+console.log(`\n    ╔══════════════════════════════════════╗\n    ║                                      ║\n    ║        Welcome to the Matrix!        ║\n    ║                                      ║\n    ║     Sheigfred Bello - DevOps Eng     ║\n    ║                                      ║\n    ║    "Optimizing the digital world"    ║\n    ║                                      ║\n    ╚══════════════════════════════════════╝\n    \n    🚀 Interested in the code? Check out the source!\n    📧 Contact: sheigfred.bello@gmail.com\n`);
