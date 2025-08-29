@@ -66,6 +66,11 @@ def documentation():
     return render_template('documentation.html')
 
 
+@app.route('/skill-tree')
+def skill_tree():
+    return render_template('skill_tree.html')
+
+
 # canonical route + alias; no hardcoded paths in redirects/templates
 @app.route('/aws-practice', methods=['GET', 'POST'])
 @app.route('/awspractice', methods=['GET', 'POST'])
