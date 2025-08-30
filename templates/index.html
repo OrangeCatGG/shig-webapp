@@ -455,12 +455,12 @@
         <section id="case-studies" class="section">
             <div class="container">
                 <h2 class="section-title">Case Studies</h2>
-                
+
                 <!-- Traffic Flow Diagram -->
                 <div class="traffic-flow-section">
                     <h3 class="flow-title">🌐 How Users Access This Portfolio</h3>
                     <p class="flow-subtitle">Simple, reliable infrastructure powering your experience</p>
-                    
+
                     <div class="traffic-flow-container">
                         <div class="flow-step" data-step="1">
                             <div class="flow-icon">💻</div>
@@ -470,7 +470,7 @@
                             </div>
                             <div class="flow-arrow">→</div>
                         </div>
-                        
+
                         <div class="flow-step" data-step="2">
                             <div class="flow-icon">🌍</div>
                             <div class="flow-content">
@@ -479,7 +479,7 @@
                             </div>
                             <div class="flow-arrow">→</div>
                         </div>
-                        
+
                         <div class="flow-step" data-step="3">
                             <div class="flow-icon">🧭</div>
                             <div class="flow-content">
@@ -488,7 +488,7 @@
                             </div>
                             <div class="flow-arrow">→</div>
                         </div>
-                        
+
                         <div class="flow-step" data-step="4">
                             <div class="flow-icon">📍</div>
                             <div class="flow-content">
@@ -497,7 +497,7 @@
                             </div>
                             <div class="flow-arrow">→</div>
                         </div>
-                        
+
                         <div class="flow-step" data-step="5">
                             <div class="flow-icon">☁️</div>
                             <div class="flow-content">
@@ -506,7 +506,7 @@
                             </div>
                             <div class="flow-arrow">→</div>
                         </div>
-                        
+
                         <div class="flow-step" data-step="6">
                             <div class="flow-icon">🔄</div>
                             <div class="flow-content">
@@ -515,7 +515,7 @@
                             </div>
                             <div class="flow-arrow">→</div>
                         </div>
-                        
+
                         <div class="flow-step" data-step="7">
                             <div class="flow-icon">🐍</div>
                             <div class="flow-content">
@@ -524,7 +524,7 @@
                             </div>
                             <div class="flow-arrow">→</div>
                         </div>
-                        
+
                         <div class="flow-step" data-step="8">
                             <div class="flow-icon">🎨</div>
                             <div class="flow-content">
@@ -533,7 +533,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Interactive Timeline -->
                     <div class="flow-timeline">
                         <div class="timeline-track">
@@ -544,7 +544,7 @@
                             <button class="timeline-btn" id="reset-flow">🔄 Reset</button>
                         </div>
                     </div>
-                    
+
                     <!-- Tech Stack Summary -->
                     <div class="tech-stack-summary">
                         <h4>🛠️ Technology Stack</h4>
@@ -572,7 +572,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="projects-grid">
 
                     <!-- CloudWatch -->
@@ -601,7 +601,8 @@
                             CPU/memory & ALB request counts. Tuned cooldowns + min/max guardrails.</p>
                         <p class="project-description"><strong>Results:</strong> Reduced error rate by
                             <strong>70%</strong> during peak events; kept p95 latency within <strong>SLO
-                                (≤300ms)</strong>.</p>
+                                (≤300ms)</strong>.
+                        </p>
                         <div class="project-tags">
                             <span class="project-tag">AWS</span>
                             <span class="project-tag">ECS</span>
@@ -618,7 +619,8 @@
                         <p class="project-description"><strong>Actions:</strong> Deployed APM, built RPS/p95/error
                             dashboards, SLOs, and composite monitors. Optimized log pipelines.</p>
                         <p class="project-description"><strong>Results:</strong> Alert noise reduced by
-                            <strong>60%</strong>, RCA time cut by <strong>50%</strong>.</p>
+                            <strong>60%</strong>, RCA time cut by <strong>50%</strong>.
+                        </p>
                         <div class="project-tags">
                             <span class="project-tag">Datadog</span>
                             <span class="project-tag">APM</span>
@@ -772,6 +774,82 @@
             });
         });
     </script>
+
+
+
+
+
+    <!-- 1) Place this button anywhere on your page -->
+    <button id="blowup"
+        style="position:fixed;right:16px;bottom:16px;z-index:9999;padding:12px 16px;border:0;border-radius:999px;background:#b50707;color:#fff;font-weight:700;box-shadow:0 10px 24px rgba(181,7,7,.35);cursor:pointer">
+        💣 Blow Up Site
+    </button>
+
+    <script>
+        (function () {
+            const btn = document.getElementById('blowup');
+            if (!btn) return;
+            let detonated = false;
+
+            // quick quake effect
+            const css = document.createElement('style');
+            css.textContent = `
+        @keyframes quake{0%,100%{transform:translate(0,0) rotate(0)}20%{transform:translate(-4px,2px) rotate(-.2deg)}40%{transform:translate(5px,-3px) rotate(.25deg)}60%{transform:translate(-3px,3px) rotate(-.15deg)}80%{transform:translate(3px,-2px) rotate(.1deg)}}
+        .quake{animation:quake .12s infinite}
+        .obliterate-msg{position:fixed;inset:0;background:#000;display:flex;align-items:center;justify-content:center;color:#fff;text-align:center;padding:24px;z-index:1000000}
+        .obliterate-msg h2{margin:0 0 10px;font:700 clamp(28px,5vw,64px)/1.1 ui-sans-serif,system-ui}
+        .obliterate-msg p{opacity:.85;font:500 clamp(14px,2vw,18px)/1.5 ui-sans-serif,system-ui}
+        canvas#boom {position:fixed;inset:0;pointer-events:none;z-index:999999;background:radial-gradient(80vmax 80vmax at 50% 50%, rgba(255,255,255,.9), rgba(255,120,0,.45) 40%, rgba(10,0,0,.96) 75%)}
+    `;
+            document.head.appendChild(css);
+
+            btn.addEventListener('click', () => {
+                if (detonated) return; detonated = true;
+
+                // shake the world
+                document.body.classList.add('quake');
+
+                // explosion canvas
+                const c = document.createElement('canvas'); c.id = 'boom';
+                const ctx = c.getContext('2d');
+                const DPR = Math.min(2, window.devicePixelRatio || 1);
+                function size() { c.width = innerWidth * DPR; c.height = innerHeight * DPR; }
+                size(); addEventListener('resize', size, { once: true });
+                document.body.appendChild(c);
+
+                // shards
+                const N = 220, shards = [], cx = c.width / 2, cy = c.height / 2;
+                const colors = ['#fff', '#ffd900', '#ff6a00', '#f33000', '#fbb000', '#a11000'];
+                for (let i = 0; i < N; i++) {
+                    const a = Math.random() * Math.PI * 2, sp = 6 + Math.random() * 18, r = 6 + Math.random() * 22;
+                    shards.push({ x: cx, y: cy, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - (4 + Math.random() * 4), g: .4 + Math.random() * .4, rot: Math.random() * Math.PI, vr: (Math.random() - .5) * .25, life: 1, size: r, color: colors[(Math.random() * colors.length) | 0] });
+                }
+
+                const started = performance.now();
+                (function tick(now) {
+                    ctx.clearRect(0, 0, c.width, c.height);
+                    shards.forEach(s => {
+                        s.vy += s.g; s.x += s.vx; s.y += s.vy; s.rot += s.vr; s.life -= 0.008 + Math.random() * 0.01;
+                        ctx.save(); ctx.translate(s.x, s.y); ctx.rotate(s.rot); ctx.globalAlpha = Math.max(0, s.life);
+                        ctx.fillStyle = s.color; const z = s.size; ctx.beginPath(); ctx.moveTo(-z * .6, -z * .4); ctx.lineTo(z * .7, -z * .2); ctx.lineTo(-z * .2, z * .8); ctx.closePath(); ctx.fill(); ctx.restore();
+                    });
+                    if (now - started < 1800) requestAnimationFrame(tick);
+                    else finalize();
+                })(performance.now());
+
+                function finalize() {
+                    document.body.classList.remove('quake');
+                    // obliterate the DOM; require manual refresh to recover
+                    document.body.innerHTML = '';
+                    const tomb = document.createElement('div');
+                    tomb.className = 'obliterate-msg';
+                    tomb.innerHTML = `<div><h2>💥 Site Destroyed</h2><p>This reality has been obliterated by your click.<br><strong>Refresh</strong> (⌘/Ctrl+R) to restore.</p></div>`;
+                    document.body.appendChild(tomb);
+                }
+            });
+        })();
+    </script>
+
 
 
 </body>
