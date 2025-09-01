@@ -5,8 +5,8 @@ testtest HAHAHA test HAHAHAHAHA... test shigshig...
 main
 
 
-<<<<<<< HEAD
-test to add
-=======
 test to add qweqwe
->>>>>>> 85fb5a1 (i added in text file)
+
+
+
+dagdag changes
