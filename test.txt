@@ -6,9 +6,9 @@ main
 
 
 test to add qweqwe
-<<<<<<< HEAD
-main
-=======
 
-qqqqq
->>>>>>> parent of cacc82a (edit is test)
+
+main
+WWWWW   WWWWWWWW WW WW
+
+
