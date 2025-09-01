@@ -6,6 +6,7 @@ main
 
 
 test to add qweqwe
+<<<<<<< HEAD
 
 
 
@@ -13,3 +14,7 @@ dagdag changes
 
 
 dd
+=======
+main
+WWWWW   WWWWWWWW WW WW
+>>>>>>> 7456632 (aw aw)
